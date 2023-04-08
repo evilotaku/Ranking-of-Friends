@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="ScoreEntry" style="flex-grow: 100; background-color: rgb(102, 94, 188); height: 100px; flex-direction: row; flex-basis: 50px; flex-shrink: 10; align-self: flex-start; min-height: 10px; max-height: 30px; width: auto;">
+        <ui:Label tabindex="-1" text="Rank" display-tooltip-when-elided="true" name="Rank" style="width: 63px; height: 30px;" />
+        <ui:Label tabindex="-1" text="Tier" display-tooltip-when-elided="true" name="Tier" style="width: 63px; height: 30px;" />
+        <ui:Label tabindex="-1" text="Name" display-tooltip-when-elided="true" name="Name" style="width: 200px; height: 30px; max-width: 200px;" />
+        <ui:Label tabindex="-1" text="Score" display-tooltip-when-elided="true" name="Score" style="width: 63px; height: 30px;" />
+    </ui:VisualElement>
+</ui:UXML>

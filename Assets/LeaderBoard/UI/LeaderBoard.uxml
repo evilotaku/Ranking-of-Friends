@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ScoreEntry" src="project://database/Assets/LeaderBoard/UI/ScoreEntry.uxml?fileID=9197481963319205126&amp;guid=1afc8fecc591f7a4d84c40c3327a14b2&amp;type=3#ScoreEntry" />
+    <ui:Instance template="ScoreEntry" name="Labels" style="left: 5%; top: 19%; height: 30px; width: 414px;" />
+    <ui:ListView focusable="true" name="leaderboard" style="top: 20%; left: 5%;" />
+</ui:UXML>

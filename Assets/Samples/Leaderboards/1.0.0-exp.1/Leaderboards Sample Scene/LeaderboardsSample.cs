@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using Unity.Services.Friends;
 using Unity.Services.Leaderboards;
 using UnityEngine;
 
 public class LeaderboardsSample : MonoBehaviour
 {
-    public const string LeaderboardId = "Best_Friends";
+    const string LeaderboardId = "Best_Friends";
     string VersionId { get; set; }
     int Offset { get; set; }
     int Limit { get; set; }
@@ -37,13 +39,14 @@ public class LeaderboardsSample : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    [ContextMenu("Get Leaderboard")]
+    
     public async void AddScore()
     {
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, 102);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
 
+    [ContextMenu("Get Leaderboard")]
     public async void GetScores()
     {
         var scoresResponse =
@@ -74,8 +77,10 @@ public class LeaderboardsSample : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    public async void GetScoresByPlayerIds()
+    [ContextMenu("Get Leaderboard by Friends")]
+    public async void GetScoresByFriends()
     {
+        FriendIds = FriendsService.Instance.Friends.Select(x => x.Id).ToList();
         var scoresResponse =
             await LeaderboardsService.Instance.GetScoresByPlayerIdsAsync(LeaderboardId, FriendIds);
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));

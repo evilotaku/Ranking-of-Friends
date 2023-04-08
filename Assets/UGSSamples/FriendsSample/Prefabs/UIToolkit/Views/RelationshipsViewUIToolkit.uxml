@@ -6,7 +6,7 @@
     <ui:VisualElement name="full-screen" style="align-items: center; flex-grow: 1; justify-content: center; background-image: none; -unity-background-scale-mode: scale-and-crop; background-color: rgba(0, 0, 0, 0); border-left-color: rgba(0, 0, 0, 0.5); border-right-color: rgba(0, 0, 0, 0.5); border-top-color: rgba(0, 0, 0, 0.5); border-bottom-color: rgba(0, 0, 0, 0.5);">
         <ui:VisualElement name="social-ui-group" style="align-items: stretch; width: 650px; flex-grow: 0; flex-shrink: 0; justify-content: space-between; height: auto; top: 0; right: 0; position: absolute; padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px; flex-direction: column-reverse;">
             <ui:Instance template="NavBarView" name="NavBarView" />
-            <ui:Instance template="LocalPlayerView" name="LocalPlayerView" style="margin-bottom: 15px;" />
+            <ui:Instance template="LocalPlayerView" name="LocalPlayerView" style="margin-bottom: 15px; flex-direction: column-reverse;" />
         </ui:VisualElement>
         <ui:Instance template="AddFriendView" name="AddFriendView" style="display: flex; visibility: visible;" />
     </ui:VisualElement>

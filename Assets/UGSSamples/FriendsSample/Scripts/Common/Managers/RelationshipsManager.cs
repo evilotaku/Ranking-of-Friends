@@ -33,12 +33,16 @@ namespace Unity.Services.Samples.Friends
         PlayerProfile m_LoggedPlayerProfile;
         public string DisplayName;
 
-        async void Start()
+        private void Start()
         {
             //If you are using multiple unity services, make sure to initialize it only once before using your services.
-            await UnityServices.InitializeAsync();
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            await Init(AuthenticationService.Instance.PlayerId);
+            //await UnityServices.InitializeAsync();
+            AuthenticationService.Instance.SignedIn += async () =>
+            {
+                print("Initiating Friends...");
+                await Init(AuthenticationService.Instance.PlayerId);
+            };
+
         }
 
         async Task Init(string playerId)
@@ -46,10 +50,17 @@ namespace Unity.Services.Samples.Friends
             await FriendsService.Instance.InitializeAsync();
             UIInit();
             //m_SamplePlayerProfileService = new SamplePlayerProfileService();
-            await AuthenticationService.Instance.UpdatePlayerNameAsync(DisplayName);
+            var name = await AuthenticationService.Instance.GetPlayerNameAsync();
+            
             await LogInAsync(playerId);
             SubscribeToFriendsEventCallbacks();
             RefreshAll();
+        }
+
+        [ContextMenu("Update Name")]
+        public async Task UpdateNameAsync()
+        {
+            await AuthenticationService.Instance.UpdatePlayerNameAsync(DisplayName);
         }
 
         void UIInit()
