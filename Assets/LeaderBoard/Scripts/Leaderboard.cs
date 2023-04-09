@@ -13,6 +13,7 @@ public class Leaderboard : MonoBehaviour
 {
     public string LeaderboardId;
     public VisualTreeAsset ScoreEntryTemplate;
+    public int TestScore;
     UIDocument LeaderboardUI;
     ListView _leaderboard;
     List<LeaderboardEntry> _scoreList;
@@ -69,8 +70,13 @@ public class Leaderboard : MonoBehaviour
         var request = await LeaderboardsService.Instance.GetScoresAsync(LeaderboardId);
         _scoreList = request.Results;
         print("Scores Updated...");
+        _leaderboard.RefreshItems(); 
+    }
+
+    [ContextMenu("Add Score")]
+    public async void AddScore()
+    {
+        _scoreList.Add(await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, TestScore));
         _leaderboard.RefreshItems();
-        
-       
     }
 }
